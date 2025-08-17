@@ -58,10 +58,10 @@ POST: Use when you need to send data to the server, especially when the data is 
 --------------------------------------------------------------------------------------------------------------
 <html>
 <body bgcolor=cyan>
-<h1>Employee Registration Page</h1><hr>
-<form action=EmployeeRegister>
+<h1>Student Registration Page</h1><hr>
+<form action=StudentRegister>
 <table>
-<tr><td>Enter EmpID<td><input type=text name=t1 size=20 required></tr>
+<tr><td>Enter Rollno<td><input type=text name=t1 size=20 required></tr>
 <tr><td>Enter Name<td><input type=text name=t2 size=20 required></tr>
 <tr><td>Enter Address<td><input type=text name=t3 size=20 required></tr>
 <tr><td><td><input type=submit value=submit></tr>
@@ -70,35 +70,33 @@ POST: Use when you need to send data to the server, especially when the data is 
 </body>
 </html>
 -------------------------------------------------------------------
-import jakarta.servlet.*;
 import java.io.*;
-import jakarta.servlet.annotation.WebServlet;
-@WebServlet("/EmployeeRegister")
-public class EmployeeRegister extends GenericServlet 
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet("/StudentRegister")
+public class StudentRegister extends GenericServlet 
 {
-public void init()
-{
-	System.out.println("init");
+
+	public void init()
+	{
+		System.out.println("init");
 	}
-
-
-@Override
-public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException 
-{
-res.setContentType("text/html");
-PrintWriter pw=res.getWriter();
-String a=req.getParameter("t1");
-String b=req.getParameter("t2");
-String c=req.getParameter("t3");
-pw.println("The Employee ID is :"+a);
-pw.println("<br>");
-pw.println("The Name is :"+b);
-pw.println("<br>");
-pw.println("The Address is :"+c);
-}
-public void destroy()
-{
-	System.out.println("Destroy");
+	@Override
+	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException 
+	{
+		PrintWriter pw=res.getWriter();
+		res.setContentType("text/html");
+		String a=req.getParameter("t1");
+		String b=req.getParameter("t2");
+		String c=req.getParameter("t3");
+		pw.println("The rollno is "+a);
+		pw.println("The name is "+b);
+		pw.println("The address is "+c);
+			}
+	public void destroy()
+	{
+		System.out.println("destroy");
 	}
 }
 -------------------------------------------------------------------------------------------
